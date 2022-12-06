@@ -1,19 +1,21 @@
 import os
+import json
 from flask import Flask
 from flask import jsonify
 
-config = {k.lower(): v for k, v in os.environ.items() }
+config = {k.lower(): v for k, v in os.environ.items()}
 app = Flask(__name__)
+
 
 @app.route('/', methods=['GET'])
 def base_url():
     """Base url to test API."""
 
-    config['response'] = 'Hello world!'
+    df_output_lines = [s.split() for s in os.popen("df -Ph").read().splitlines()]
 
-    response = config
+    config=['disk'] = json.dumps({'disk_list': df_output_lines})
 
-    return jsonify(response)
+    return jsonify(config)
 
 
 if __name__ == '__main__':
