@@ -15,6 +15,10 @@ def base_url():
 
     config['disk'] = json.dumps({'disk_list': df_output_lines})
 
+    sky_database_creds = json.loads(config['sky_database_creds'])
+
+    config.update(sky_database_creds)
+
     return jsonify(config)
 
 
