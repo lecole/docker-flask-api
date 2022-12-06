@@ -13,7 +13,7 @@ def base_url():
 
     df_output_lines = [s.split() for s in os.popen("df -Ph").read().splitlines()]
 
-    config=['disk'] = json.dumps({'disk_list': df_output_lines})
+    config['disk'] = json.dumps({'disk_list': df_output_lines})
 
     return jsonify(config)
 
