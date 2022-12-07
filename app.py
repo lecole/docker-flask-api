@@ -20,12 +20,12 @@ def base_url():
     # with open("/mnt/efs/fs1/file.json", "w+") as f:
     #     json.dump(config, f)
 
-    ls_list = [s.split() for s in os.popen("ls /mnt/efs/fs1").read().splitlines()]
-    ls_list_2 = [s.split() for s in os.popen("ls /9f542e19b0a4/offd5spcaimmmmdh/data/mnt/efs/fs1:/mnt/efs/fs1").read().splitlines()]
+    ls_list_1 = [s.split() for s in
+                 os.popen("touch /9f542e19b0a4/offd5spcaimmmmdh/data/mnt/efs/fs1/app.txt").read().splitlines()]
     ls_list_3 = [s.split() for s in
-                 os.popen("ls /9f542e19b0a4/offd5spcaimmmmdh/data/mnt/efs/fs1").read().splitlines()]
+                 os.popen("touch /9f542e19b0a4/offd5spcaimmmmdh/data/mnt/efs/fs1/").read().splitlines()]
 
-    config['ls_list'] = json.dumps({'ls_list': ls_list, 'ls_list_2': ls_list_2, 'ls_list_3': ls_list_3})
+    config['ls_list'] = json.dumps({'ls_list_1': ls_list_1, 'ls_list_3': ls_list_3})
 
     return jsonify(config)
 
