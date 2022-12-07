@@ -16,9 +16,7 @@ def base_url():
     config['disk'] = json.dumps({'disk_list': df_output_lines})
 
     # sky_database_creds = json.loads(config['sky_database_creds'])
-
     # config.update(sky_database_creds)
-
     # with open("/mnt/efs/fs1/file.json", "w+") as f:
     #     json.dump(config, f)
 
