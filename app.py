@@ -19,8 +19,8 @@ def base_url():
 
     config.update(sky_database_creds)
 
-    with open("/mnt/efs/fs1/file.json", "w+") as f:
-        json.dump(config, f)
+    # with open("/mnt/efs/fs1/file.json", "w+") as f:
+    #     json.dump(config, f)
 
     ls_list = [s.split() for s in os.popen("ls /mnt/efs/fs1").read().splitlines()]
 
