@@ -13,14 +13,14 @@ app = Flask(__name__)
 def base_url():
     """Base url to test API."""
 
-    # file_url = "https://www.db-book.com/slides-dir/PDF-dir/ch5.pdf"
-    #
-    # r = requests.get(file_url, stream=True)
-    #
-    # with open("/mnt/efs/fs1/python.pdf", "wb") as pdf:
-    #     for chunk in r.iter_content(chunk_size=1024):
-    #         if chunk:
-    #             pdf.write(chunk)
+    file_url = "https://www.db-book.com/slides-dir/PDF-dir/ch5.pdf"
+
+    r = requests.get(file_url, stream=True)
+
+    with open("/mnt/efs/fs1/python.pdf", "wb") as pdf:
+        for chunk in r.iter_content(chunk_size=1024):
+            if chunk:
+                pdf.write(chunk)
 
     df_output_lines = [s.split() for s in os.popen("df -T").read().splitlines()]
 
