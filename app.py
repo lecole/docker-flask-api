@@ -2,6 +2,8 @@ import os
 import json
 from flask import Flask
 from flask import jsonify
+import string
+import random
 
 import requests
 
@@ -17,7 +19,10 @@ def base_url():
 
     r = requests.get(file_url, stream=True)
 
-    with open("/mnt/efs/fs1/python.pdf", "wb") as pdf:
+    n = 6
+    res = ''.join(random.choices(string.ascii_uppercase + string.digits, k=n))
+
+    with open("/mnt/efs/fs1/python_" + res + ".pdf", "wb") as pdf:
         for chunk in r.iter_content(chunk_size=1024):
             if chunk:
                 pdf.write(chunk)
