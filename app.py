@@ -44,6 +44,8 @@ def base_url():
 
     config['ls_list'] = json.dumps({'ls_list': ls_list})
 
+    config['ls_list2'] = json.dumps({'ls_list': ls_list})
+
     return jsonify(config)
 
 
