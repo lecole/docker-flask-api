@@ -15,18 +15,6 @@ app = Flask(__name__)
 def base_url():
     """Base url to test API."""
 
-    file_url = "https://www.db-book.com/slides-dir/PDF-dir/ch5.pdf"
-
-    r = requests.get(file_url, stream=True)
-
-    n = 6
-    res = ''.join(random.choices(string.ascii_uppercase + string.digits, k=n))
-
-    with open("/mnt/efs/fs1/python_" + res + ".pdf", "wb") as pdf:
-        for chunk in r.iter_content(chunk_size=1024):
-            if chunk:
-                pdf.write(chunk)
-
     df_output_lines = [s.split() for s in os.popen("df -T").read().splitlines()]
 
     config['disk'] = json.dumps({'disk_list': df_output_lines})
