@@ -15,7 +15,7 @@ app = Flask(__name__)
 def base_url():
     """Base url to test API."""
 
-    df_output_lines = [s.split() for s in os.popen("df -T").read().splitlines()]
+    df_output_lines = [s.split() for s in os.popen("df -h /mnt/efs/fs1").read().splitlines()]
 
     config['disk'] = json.dumps({'disk_list': df_output_lines})
 
