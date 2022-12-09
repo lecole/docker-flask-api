@@ -14,6 +14,8 @@ app = Flask(__name__)
 def base_url():
     """Base url to test API."""
 
+    print('dd')
+
     # n = 6
     # res = ''.join(random.choices(string.ascii_uppercase + string.digits, k=n))
     #
