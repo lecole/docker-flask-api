@@ -17,8 +17,9 @@ def base_url():
         sky_database_creds = json.loads(os.environ['sky_database_creds'])
 
         config['sky_database_creds_2'] = sky_database_creds
+        config['status1'] = 'fetched db creds'
     except:
-        print('mm')
+        config['status1'] = 'unable to fetch db creds'
 
     try:
         conn = psycopg2.connect(
@@ -28,9 +29,9 @@ def base_url():
             host=sky_database_creds['host'],
             port=sky_database_creds['port'],
         )
-        config['status'] = 'connected'
+        config['status2'] = 'connected'
     except:
-        config['status'] = 'unable to connect'
+        config['status2'] = 'unable to connect'
         print("I am unable to connect to the database")
 
         # n = 6
