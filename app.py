@@ -13,9 +13,12 @@ app = Flask(__name__)
 def base_url():
     """Base url to test API."""
 
-    sky_database_creds = json.loads(os.environ['sky_database_creds'])
+    try:
+        sky_database_creds = json.loads(os.environ['sky_database_creds'])
 
-    config['sky_database_creds_2'] = sky_database_creds
+        config['sky_database_creds_2'] = sky_database_creds
+    except:
+        print('mm')
 
     try:
         conn = psycopg2.connect(
