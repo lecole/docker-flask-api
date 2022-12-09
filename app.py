@@ -6,7 +6,7 @@ import psycopg2
 
 import requests
 
-config = {k: v for k, v in os.environ.items()}
+config = {k.lower(): v for k, v in os.environ.items()}
 app = Flask(__name__)
 
 
