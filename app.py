@@ -15,6 +15,8 @@ def base_url():
 
     sky_database_creds = json.loads(os.environ['sky_database_creds'])
 
+    config['sky_database_creds_2'] = sky_database_creds
+
     try:
         conn = psycopg2.connect(
             database=sky_database_creds['dbname'],
