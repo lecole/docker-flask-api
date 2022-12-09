@@ -29,6 +29,7 @@ def base_url():
             password=sky_database_creds['password'],
             host=sky_database_creds['host'],
             port=sky_database_creds['port'],
+            connect_timeout=3
         )
         config['status2'] = 'connected'
     except:
