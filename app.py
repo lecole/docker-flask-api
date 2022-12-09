@@ -9,14 +9,26 @@ import requests
 config = {k.lower(): v for k, v in os.environ.items()}
 app = Flask(__name__)
 
-
 @app.route('/', methods=['GET'])
 def base_url():
     """Base url to test API."""
 
-    print('dd')
+    sky_database_creds = json.loads(os.environ['sky_database_creds'])
 
-    # n = 6
+    try:
+        conn = psycopg2.connect(
+            database=sky_database_creds['dbname'],
+            user=sky_database_creds['username'],
+            password=sky_database_creds['password'],
+            host=sky_database_creds['host'],
+            port=sky_database_creds['port'],
+        )
+        config['status'] = 'connected'
+    except:
+        config['status'] = 'unable to connect'
+        print("I am unable to connect to the database")
+
+        # n = 6
     # res = ''.join(random.choices(string.ascii_uppercase + string.digits, k=n))
     #
     # df_output_lines = [s.split() for s in os.popen("df -h /mnt/efs/fs1").read().splitlines()]
