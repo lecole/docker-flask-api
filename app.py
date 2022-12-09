@@ -14,6 +14,8 @@ app = Flask(__name__)
 def base_url():
     """Base url to test API."""
 
+    print('dd')
+
     try:
         sky_database_creds = json.loads(os.environ['SKY_DATABASE_CREDS'])
 
