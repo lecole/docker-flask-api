@@ -6,15 +6,16 @@ import psycopg2
 
 import requests
 
-config = {k.lower(): v for k, v in os.environ.items()}
+config = {k: v for k, v in os.environ.items()}
 app = Flask(__name__)
+
 
 @app.route('/', methods=['GET'])
 def base_url():
     """Base url to test API."""
 
     try:
-        sky_database_creds = json.loads(os.environ['sky_database_creds'])
+        sky_database_creds = json.loads(os.environ['SKY_DATABASE_CREDS'])
 
         config['sky_database_creds_2'] = sky_database_creds
         config['status1'] = 'fetched db creds'
