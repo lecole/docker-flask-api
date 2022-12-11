@@ -21,7 +21,7 @@ def base_url():
 
 
 @app.route('/rds', methods=['GET'])
-def base_url():
+def rds_url():
     """Base url to test API."""
 
     print('dd')
@@ -52,7 +52,7 @@ def base_url():
 
 
 @app.route('/efs', methods=['GET'])
-def base_url():
+def efs_url():
     """Base url to test API."""
 
     print('dd')
