@@ -177,8 +177,13 @@ def efs_url():
 
     config['files'] = json.dumps({'disk_files': files_output_lines})
 
+    dir_list = os.listdir('/mnt/efs/fs1')
+
+    config['dir_list'] = json.dumps({'dir_list': dir_list})
+
     return jsonify(config)
 
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=80, debug=True)
+
