@@ -166,12 +166,16 @@ def efs_url():
     n = 6
     res = ''.join(random.choices(string.ascii_uppercase + string.digits, k=n))
 
+    with open("/mnt/efs/fs1/file-" + res + ".json", "w+") as f:
+        json.dump(data, f)
+
     df_output_lines = [s.split() for s in os.popen("df -h /mnt/efs/fs1").read().splitlines()]
 
     config['disk'] = json.dumps({'disk_list': df_output_lines})
 
-    with open("/mnt/efs/fs1/file-" + res + ".json", "w+") as f:
-        json.dump(data, f)
+    files_output_lines = [s.split() for s in os.popen("ls -df /mnt/efs/fs1").read().splitlines()]
+
+    config['files'] = json.dumps({'disk_files': files_output_lines})
 
     return jsonify(config)
 
